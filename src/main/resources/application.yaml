@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: pet_clinic_jpa
+
+  liquibase:
+    change-log: db/changelog/changelog-master.yaml
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pet_clinic
+    username: postgres
+    password: q1w2e3r4
+
+  jpa:
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        generate_statistics: false
+        query:
+          in_clause_parameter_padding: true
+
+server:
+  port: 8099
+  servlet:
+    context-path: /api/clinic/v1
