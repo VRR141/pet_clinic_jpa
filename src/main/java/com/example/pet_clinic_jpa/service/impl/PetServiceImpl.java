@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.Objects;
 
 @Component
@@ -23,6 +24,12 @@ public class PetServiceImpl implements PetService {
     @Transactional(readOnly = true)
     public Pet getById(Long id) {
         return repository.findByIdWithFetchedVisits(id).orElseThrow(() -> new EntityNotExistException(Pet.class, id));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Collection<Pet> getPetsByIdentifiers(Collection<Long> ids) {
+        return repository.findByIdentifiersIn(ids);
     }
 
     @Override
