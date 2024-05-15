@@ -33,6 +33,8 @@ public class Pet {
 
     private LocalDate birthDate;
 
+    private byte[] payload;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Owner owner;
 
