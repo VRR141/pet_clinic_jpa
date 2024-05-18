@@ -23,5 +23,4 @@ public class OwnerDto {
     private String address;
     private String mobilePhone;
     private List<PetDto> pets;
-    private byte[] payload;
 }

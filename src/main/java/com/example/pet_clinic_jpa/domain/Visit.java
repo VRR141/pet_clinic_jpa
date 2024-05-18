@@ -29,8 +29,6 @@ public class Visit {
 
     private String description;
 
-    private byte[] payload;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Pet pet;
 }

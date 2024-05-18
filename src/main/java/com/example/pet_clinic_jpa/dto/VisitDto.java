@@ -21,5 +21,4 @@ public class VisitDto {
     private Long petId;
     private OffsetDateTime timestamp;
     private String description;
-    private byte[] payload;
 }

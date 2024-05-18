@@ -18,5 +18,4 @@ public class CreateVisitDto {
     private Long petIdentifier;
     private OffsetDateTime visitDate;
     private String description;
-    private byte[] payload;
 }

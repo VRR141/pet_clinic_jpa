@@ -35,8 +35,6 @@ public class Owner {
 
     private String mobilePhone;
 
-    private byte[] payload;
-
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "owner_id")
     private List<Pet> pets;
