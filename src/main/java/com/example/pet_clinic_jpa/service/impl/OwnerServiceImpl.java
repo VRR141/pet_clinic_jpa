@@ -1,10 +1,13 @@
 package com.example.pet_clinic_jpa.service.impl;
 
+import com.example.pet_clinic_jpa.config.RedisCacheConfig;
 import com.example.pet_clinic_jpa.domain.Owner;
 import com.example.pet_clinic_jpa.exception.EntityNotExistException;
 import com.example.pet_clinic_jpa.repo.OwnerJpaRepository;
 import com.example.pet_clinic_jpa.service.OwnerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,24 +21,28 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable(value = RedisCacheConfig.OWNER_CACHE, key = "#id")
     public Owner getOwnerById(Long id) {
         return repository.getOwnerById(id).orElseThrow(() -> new EntityNotExistException(Owner.class, id));
     }
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable(value = RedisCacheConfig.OWNER_CACHE, key = "'with_pets' + #id")
     public Owner getOwnerByIdWithRelatedPets(Long id) {
         return repository.getOwnerByIdWithRelatedPets(id).orElseThrow(() -> new EntityNotExistException(Owner.class, id));
     }
 
     @Override
     @Transactional
+    @CachePut(value = RedisCacheConfig.OWNER_CACHE, key = "#owner.id")
     public Owner createOwner(Owner owner) {
         return repository.save(owner);
     }
 
     @Override
     @Transactional
+    @CachePut(value = RedisCacheConfig.OWNER_CACHE, key = "#owner.id")
     public Owner updateOwner(Owner owner) {
         var persistedOwner = repository
                 .getOwnerById(owner.getId())

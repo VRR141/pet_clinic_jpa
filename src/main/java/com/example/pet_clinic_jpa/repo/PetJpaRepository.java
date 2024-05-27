@@ -11,20 +11,13 @@ public interface PetJpaRepository extends JpaRepository<Pet, Long> {
 
     @Query("""
             FROM Pet pet
-            LEFT JOIN FETCH pet.visits
-            WHERE pet.id = :id
-            """)
-    Optional<Pet> findByIdWithFetchedVisits(Long id);
-
-    @Query("""
-            FROM Pet pet
             WHERE pet.id = :id
             """)
     Optional<Pet> findById(Long id);
 
     @Query("""
-           FROM Pet pet
-           WHERE pet.id in :ids
-            """)
+            FROM Pet pet
+            WHERE pet.id in :ids
+             """)
     Collection<Pet> findByIdentifiersIn(Collection<Long> ids);
 }

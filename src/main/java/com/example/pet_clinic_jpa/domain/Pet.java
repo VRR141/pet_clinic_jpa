@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
-public class Pet {
+public class Pet implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.OffsetDateTime;
 
 @NoArgsConstructor
@@ -20,7 +21,7 @@ import java.time.OffsetDateTime;
 @Getter
 @Setter
 @Entity
-public class Visit {
+public class Visit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
