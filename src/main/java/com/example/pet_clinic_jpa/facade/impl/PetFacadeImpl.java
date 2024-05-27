@@ -28,7 +28,7 @@ public class PetFacadeImpl implements PetFacade {
     @Override
     public PetDto getPet(Long id) {
         final var pet = petService.getById(id);
-        return mapper.map(pet);
+        return mapper.mapIgnoreVisits(pet);
     }
 
     @Override

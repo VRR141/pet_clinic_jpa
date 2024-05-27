@@ -23,7 +23,7 @@ public class PetServiceImpl implements PetService {
     @Override
     @Transactional(readOnly = true)
     public Pet getById(Long id) {
-        return repository.findByIdWithFetchedVisits(id).orElseThrow(() -> new EntityNotExistException(Pet.class, id));
+        return repository.findById(id).orElseThrow(() -> new EntityNotExistException(Pet.class, id));
     }
 
     @Override
