@@ -2,7 +2,6 @@ package com.example.pet_clinic_jpa.config;
 
 import com.example.pet_clinic_jpa.domain.Pet;
 import com.example.pet_clinic_jpa.domain.Visit;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;

@@ -20,7 +20,6 @@ spring:
           max-active: 6
           max-idle: 6
           min-idle: 2
-          enabled: true
       client-name: ${spring.application.name}
 
   jpa:
