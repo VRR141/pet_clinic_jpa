@@ -39,4 +39,6 @@ public class Pet {
     @OneToMany
     @JoinColumn(name = "pet_id")
     private List<Visit> visits;
+
+    private byte[] payload;
 }

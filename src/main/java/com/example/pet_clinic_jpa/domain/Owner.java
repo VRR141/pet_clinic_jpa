@@ -38,4 +38,6 @@ public class Owner {
     @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "owner_id")
     private List<Pet> pets;
+
+    private byte[] payload;
 }

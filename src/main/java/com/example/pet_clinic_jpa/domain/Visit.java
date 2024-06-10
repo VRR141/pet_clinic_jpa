@@ -31,4 +31,6 @@ public class Visit {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Pet pet;
+
+    private byte[] payload;
 }
